@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'todo/bootstrap.min.css' %}" media="screen">
+</head>
+
+<center>
+<h2>User Login</h2>
+<form class="form-inline" action = {% url 'home' %} method="post">
+{% csrf_token %}
+	<div class="form-group">
+
+	<br><input type="text" autofocus="autofocus" class="form-control" name="username" placeholder="Username"><br><br>
+	<input type="password" class="form-control" name="password" placeholder="Password"><br><br>
+	<input type="submit" class="btn btn-primary" value="Login!">

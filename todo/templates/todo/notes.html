@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %} 
+<head>
+<link rel="stylesheet" type="text/css" href="{% static 'todo/bootstrap.min.css' %}" media="screen">
+<link rel="stylesheet" type="text/css" href="{% static 'todo/bootstrap-theme.min.css' %}" media="screen">
+<script type="text/javascript" src="{% static 'todo/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'todo/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'todo/jquery.min.js' %}"></script>
+
+</head>
+
+<body>
+<center>
+<br><br><br><br>
+<form action="{% url 'notes' %}" method="post">
+{% csrf_token %}
+<button type="submit" name="category" value="all" class="btn btn-primary btn-lg">All</button>
+<button type="submit" name="category" value="personal" class="btn btn-primary btn-lg">Personal</button>
+<button type="submit" name="category" value="work" class="btn btn-primary btn-lg">Work</button>
+<button type="submit" name="category" value="archive" class="btn btn-primary btn-lg">Archive</button>
+<button type="submit" name="category" value="other" class="btn btn-primary btn-lg">Other</button>
+</form>
+<div class="collapse navbar-collapse col-sm-2 col-sm-offset-11" id="bs-example-navbar-collapse-1" >
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="btn btn-success btn-mini dropdown-toggle ">{{ user }} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{% url 'logout' %}">Logout!</a></li>
+                        </ul>
+                </ul>
+
+</div>
+<br><br>
+<ul>
+{% for i in list %}
+   <li>{{ i }}</li>
+ {% endfor %}
+ </ul>
+
+ </body>
